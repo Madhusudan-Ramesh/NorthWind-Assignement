@@ -1,0 +1,9 @@
+.AdvData{
+    background-color: aliceblue;
+    position: fixed;
+    height: 70px;
+    width: 88%;
+    bottom: 10px;
+    padding: 20px;
+}
+

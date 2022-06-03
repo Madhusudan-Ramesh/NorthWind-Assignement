@@ -1,0 +1,29 @@
+table{
+    margin-top: 20px;
+}
+
+.container{
+    margin-top: 20px;
+}
+
+.btn-primary{
+    margin-top: 10px;
+}
+
+.form-group{
+    border: 1px solid gray;
+    width: 40%;
+    padding: 20px;
+}
+
+.form-body{
+    margin-top: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-danger{
+    position: absolute;
+    right: 78px;
+}

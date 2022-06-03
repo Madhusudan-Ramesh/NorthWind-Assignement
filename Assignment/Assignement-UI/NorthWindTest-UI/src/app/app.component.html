@@ -1,0 +1,81 @@
+<div class="container">
+
+  <div class="form-body" *ngIf="Validation">
+    <form class="form-group" [formGroup]="userData"(ngSubmit) = "onSubmit()">
+      <div>
+        <div *ngIf="inValidData" class="alert alert-danger">Invalid username or password</div>
+        <div class="col-sm-2 form-label"><label>Name</label></div>
+          <div class="">
+            <input
+              type="text"
+              name="Name"
+              id="Name"
+              class="form-control"
+              formControlName="Name"
+            />
+          </div>
+          <div class="col-sm-2 form-label">
+            <label for="password">Password</label>
+          </div>
+          <div class="">
+            <input
+              type="password"
+              name="password"
+              id="password"
+              class="form-control"
+              formControlName="password"
+            />
+          </div>
+          <div class="form-label" >
+            <button class="btn btn-primary"type="submit" [disabled]="!userData.valid">
+              Login
+            </button>
+          </div>
+      </div>
+      
+    </form>
+  </div>
+  
+
+  <div *ngIf="tabelValidation">
+    <table class="table table-bordered">
+      <tbody>
+    
+        <tr class="table-dark">
+          <th scope="col">SLNO</th>
+          <th scope="col">Country</th>
+          <th scope="col">TotalSales</th>
+        </tr>
+    
+        <tr *ngFor="let empSalesData of employeesSales
+        |  paginate
+        : {
+            itemsPerPage: tableSize,
+            currentPage: page,
+            totalItems: count
+          };
+          let i = index
+        "
+        >
+          <td>{{i+1}}</td>
+          <td>{{empSalesData.country}}</td>
+          <td>{{empSalesData.salesAmount}}</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+    <div class="d-flex justify-content-center">
+      <pagination-controls
+        previousLabel="Prev"
+        nextLabel="Next"
+        (pageChange)="onTableDataChange($event)"
+      >
+      </pagination-controls>
+    </div>
+    <button class="btn btn-danger" (click)="onLogout()">Logout</button>
+  </div>
+
+<app-Advertisement [data]="AdvertisementData" *ngIf="tabelValidation"></app-Advertisement>
+
+
